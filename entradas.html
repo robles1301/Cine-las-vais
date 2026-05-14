@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprar Entradas — Cines Las Vías</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <a href="index.html" class="nav__logo">Cines <em>Las Vías</em></a>
+  <ul class="nav__links">
+    <li><a href="index.html">Cartelera</a></li>
+  </ul>
+  <div class="nav__right">
+    <button class="nav__hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__drawer" id="drawer">
+  <a href="index.html">Cartelera</a>
+</div>
+
+<!-- PURCHASE BAR -->
+<div class="purchase-bar">
+  <div class="container">
+    <div class="purchase-bar__inner">
+      <div>
+        <div class="purchase-bar__movie" id="purchaseMovie">Cargando...</div>
+        <div class="purchase-bar__session" id="purchaseSession"></div>
+      </div>
+      <div class="steps" role="list">
+        <div class="step" role="listitem"><span class="step__n">1</span><span class="step__lbl">Sesión</span></div>
+        <div class="step" role="listitem"><span class="step__n">2</span><span class="step__lbl">Asientos</span></div>
+        <div class="step" role="listitem"><span class="step__n">3</span><span class="step__lbl">Pago</span></div>
+        <div class="step" role="listitem"><span class="step__n">4</span><span class="step__lbl">Confirmación</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main id="purchaseMain">
+  <div class="container">
+    <div class="purchase-layout">
+
+      <!-- LEFT: step panels -->
+      <div>
+        <!-- STEP 2 — Seats -->
+        <div class="step-panel" id="panel2">
+          <div class="seat-panel">
+            <div class="seat-panel__title">Selecciona tus asientos</div>
+            <div class="seat-panel__sub">Hasta 9 asientos por compra. Las filas marcadas son zona VIP.</div>
+            <div class="screen-area">
+              <div class="screen-bar">Pantalla</div>
+              <div class="screen-glow"></div>
+            </div>
+            <div class="seat-rows" id="seatRows"></div>
+            <div class="seat-legend">
+              <div class="legend-item"><div class="legend-sw legend-sw--a"></div>Disponible</div>
+              <div class="legend-item"><div class="legend-sw legend-sw--s"></div>Seleccionado</div>
+              <div class="legend-item"><div class="legend-sw legend-sw--o"></div>Ocupado</div>
+              <div class="legend-item"><div class="legend-sw legend-sw--v"></div>VIP</div>
+            </div>
+          </div>
+
+          <div class="ticket-panel">
+            <div class="ticket-panel__lbl">Tipo de entrada</div>
+            <div id="ticketTypes"></div>
+          </div>
+
+          <div style="margin-top:16px">
+            <button id="proceedBtn" class="btn btn--primary btn--block" onclick="proceedToPayment()" disabled>
+              Selecciona asientos
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3 — Payment -->
+        <div class="step-panel" id="panel3" style="display:none">
+          <div class="pay-form">
+            <div class="pay-form__title">Datos de pago</div>
+            <div class="pay-form__sub">
+              Asientos: <span id="paySeats"></span> &nbsp;·&nbsp; Total: <span id="payTotal"></span>
+            </div>
+            <form id="paymentForm" novalidate>
+              <div class="form-group">
+                <label class="form-label" for="cardName">Nombre en la tarjeta</label>
+                <input class="form-input" id="cardName" type="text" placeholder="NOMBRE APELLIDO" required autocomplete="cc-name">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cardNumber">Número de tarjeta</label>
+                <input class="form-input" id="cardNumber" type="text" placeholder="0000 0000 0000 0000" maxlength="19" required autocomplete="cc-number">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="cardExpiry">Caducidad</label>
+                  <input class="form-input" id="cardExpiry" type="text" placeholder="MM/AA" maxlength="5" required autocomplete="cc-exp">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="cardCvv">CVV</label>
+                  <input class="form-input" id="cardCvv" type="text" placeholder="···" maxlength="4" required autocomplete="cc-csc">
+                </div>
+              </div>
+              <div class="pay-security">
+                <div class="pay-security__dot"></div>
+                <span class="pay-security__text">Pago cifrado mediante SSL 256 bits. Tus datos están protegidos.</span>
+              </div>
+              <div class="pay-actions">
+                <button type="button" class="btn btn--ghost" onclick="backToSeats()">Volver</button>
+                <button type="submit" class="btn btn--primary" style="flex:1">Confirmar compra</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- STEP 4 — Confirmation -->
+        <div class="step-panel" id="panel4" style="display:none">
+          <div class="confirm">
+            <div class="confirm__rule"></div>
+            <div class="confirm__title">Compra confirmada</div>
+            <div class="confirm__sub">
+              Tu entrada ha sido reservada. Recibirás una confirmación por email.<br>
+              Presenta el código en taquilla o en la puerta de la sala.
+            </div>
+            <div class="confirm__code" id="confirmCode"></div>
+            <div class="confirm__detail">
+              <span id="confirmMovie"></span><br>
+              <span id="confirmSession"></span><br>
+              Asientos: <span id="confirmSeats"></span><br>
+              <strong style="color:var(--white)">Total: <span id="confirmTotal"></span></strong>
+            </div>
+            <a href="index.html" class="btn btn--outline">Ver más películas</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: order summary -->
+      <aside class="order-sidebar">
+        <div class="order-sidebar__title">Resumen del pedido</div>
+        <div class="order-movie">
+          <div class="order-poster" id="orderPoster"></div>
+          <div>
+            <div class="order-movie__name" id="orderMovieTitle"></div>
+            <div class="order-movie__info" id="orderMovieSession"></div>
+          </div>
+        </div>
+        <div class="order-seats">
+          <div class="order-seats__lbl">Asientos</div>
+          <div class="order-seats__list" id="orderSeats">
+            <span style="font-size:.72rem;color:var(--dim)">Ninguno seleccionado</span>
+          </div>
+        </div>
+        <div class="order-total">
+          <div class="order-row"><span>Subtotal</span><span id="orderSubtotal">0,00 €</span></div>
+          <div class="order-row"><span>Cargo por servicio</span><span id="orderServicios">0,00 €</span></div>
+          <div class="order-row order-row--total"><span>Total</span><span id="orderTotal">0,00 €</span></div>
+        </div>
+        <div class="order-notice">Las entradas no son reembolsables tras la confirmación. Llega 10 minutos antes de la sesión.</div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 Cines Las Vías. Todos los derechos reservados.</span>
+      <div class="footer__legal">
+        <a href="#">Aviso legal</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/entradas.js"></script>
+</body>
+</html>

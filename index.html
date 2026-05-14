@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cines Las Vías — Cartelera Ciudad Real</title>
+  <meta name="description" content="Cartelera, horarios y venta de entradas online. Cines Las Vías, Ciudad Real.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">Cines <em>Las Vías</em></a>
+  <ul class="nav__links">
+    <li><a href="index.html" class="active">Cartelera</a></li>
+    <li><a href="#proximos">Próximos Estrenos</a></li>
+    <li><a href="#salas">Salas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav__right">
+    <a href="#cartelera" class="nav__entradas">Entradas</a>
+    <button class="nav__hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__drawer" id="drawer">
+  <a href="index.html">Cartelera</a>
+  <a href="#proximos">Próximos Estrenos</a>
+  <a href="#salas">Salas</a>
+  <a href="#contacto">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero__bg" id="heroBg"></div>
+  <div class="hero__strip hero__strip--l" aria-hidden="true">
+    <div class="hero__strip-hole"></div><div class="hero__strip-hole"></div>
+    <div class="hero__strip-hole"></div><div class="hero__strip-hole"></div>
+    <div class="hero__strip-hole"></div><div class="hero__strip-hole"></div>
+    <div class="hero__strip-hole"></div><div class="hero__strip-hole"></div>
+  </div>
+  <div class="hero__strip hero__strip--r" aria-hidden="true">
+    <div class="hero__strip-hole"></div><div class="hero__strip-hole"></div>
+    <div class="hero__strip-hole"></div><div class="hero__strip-hole"></div>
+    <div class="hero__strip-hole"></div><div class="hero__strip-hole"></div>
+    <div class="hero__strip-hole"></div><div class="hero__strip-hole"></div>
+  </div>
+  <div class="hero__content">
+    <div class="hero__eyebrow">Ahora en cartelera</div>
+    <h1 class="hero__title" id="heroTitle"></h1>
+    <div class="hero__meta" id="heroMeta"></div>
+    <p class="hero__synopsis" id="heroSynopsis"></p>
+    <div class="hero__actions">
+      <a id="heroCta" href="#" class="hero__btn hero__btn--primary">Ver detalles</a>
+      <a id="heroComprar" href="#" class="hero__btn hero__btn--ghost">Comprar entradas</a>
+    </div>
+  </div>
+  <div class="hero__nav" id="heroDots"></div>
+</section>
+
+<!-- CARTELERA -->
+<section class="section section--first" id="cartelera">
+  <div class="container">
+    <div class="section__header">
+      <div>
+        <span class="section__kicker">Programación</span>
+        <h2 class="section__title">En Cartelera</h2>
+      </div>
+      <a href="#" class="section__more">Ver todas</a>
+    </div>
+    <div class="filter-tabs" role="tablist">
+      <button class="filter-tab active" data-filter="all">Todos</button>
+      <button class="filter-tab" data-filter="acción">Acción</button>
+      <button class="filter-tab" data-filter="terror">Terror</button>
+      <button class="filter-tab" data-filter="comedia">Comedia</button>
+      <button class="filter-tab" data-filter="drama">Drama</button>
+      <button class="filter-tab" data-filter="musical">Musical</button>
+      <button class="filter-tab" data-filter="animación">Animación</button>
+      <button class="filter-tab" data-filter="ciencia ficción">Sci-Fi</button>
+      <button class="filter-tab" data-filter="fantasía">Fantasía</button>
+    </div>
+    <div class="movies-grid" id="moviesGrid"></div>
+  </div>
+</section>
+
+<!-- PRÓXIMOS ESTRENOS -->
+<section class="section" id="proximos">
+  <div class="container">
+    <div class="section__header">
+      <div>
+        <span class="section__kicker">Próximamente</span>
+        <h2 class="section__title">Próximos Estrenos</h2>
+      </div>
+    </div>
+    <div class="upcoming-grid" id="upcomingGrid"></div>
+  </div>
+</section>
+
+<!-- SALAS -->
+<section class="section" id="salas">
+  <div class="container">
+    <div class="section__header">
+      <div>
+        <span class="section__kicker">Instalaciones</span>
+        <h2 class="section__title">Nuestras Salas</h2>
+      </div>
+    </div>
+    <div class="salas-list" id="salasGrid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contacto">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">Cines <em>Las Vías</em></div>
+        <p class="footer__desc">Tu sala de cine en el corazón de La Mancha. La experiencia del séptimo arte con la mejor tecnología de imagen y sonido.</p>
+        <div class="footer__social">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Horarios</h4>
+        <span id="footerHor"></span>
+        <span style="font-size:.72rem;color:var(--dim)">Taquilla abre 30 min antes</span>
+      </div>
+      <div class="footer__col">
+        <h4>Información</h4>
+        <a href="#">Sobre nosotros</a>
+        <a href="#">Tarifas y descuentos</a>
+        <a href="#">Accesibilidad</a>
+        <a href="#">Sala privada</a>
+        <a href="#">Gift Cards</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contacto</h4>
+        <a href="#" id="footerAddr"></a>
+        <a href="#" id="footerTel"></a>
+        <a href="#" id="footerEmail"></a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 Cines Las Vías. Todos los derechos reservados.</span>
+      <div class="footer__legal">
+        <a href="#">Aviso legal</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

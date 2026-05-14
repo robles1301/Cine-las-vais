@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Película — Cines Las Vías</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">Cines <em>Las Vías</em></a>
+  <ul class="nav__links">
+    <li><a href="index.html">Cartelera</a></li>
+    <li><a href="index.html#proximos">Próximos Estrenos</a></li>
+    <li><a href="index.html#salas">Salas</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav__right">
+    <a href="#sesiones" class="nav__entradas">Entradas</a>
+    <button class="nav__hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__drawer" id="drawer">
+  <a href="index.html">Cartelera</a>
+  <a href="index.html#proximos">Próximos Estrenos</a>
+  <a href="index.html#salas">Salas</a>
+  <a href="index.html#contacto">Contacto</a>
+</div>
+
+<div id="detailMain">
+  <!-- DETAIL HERO -->
+  <section class="detail-hero">
+    <div class="detail-bg" id="detailBg"></div>
+    <div class="detail-layout">
+      <div class="detail-poster" id="detailPoster"></div>
+      <div class="detail-info">
+        <div class="detail-crumb">
+          <a href="index.html">Cartelera</a>
+          <span class="detail-crumb-sep">›</span>
+          <span id="detailBreadTitle">Película</span>
+        </div>
+        <div class="detail-genres" id="detailGenres"></div>
+        <h1 class="detail-title" id="detailTitle"></h1>
+        <div class="detail-original" id="detailOriginal"></div>
+        <div class="detail-stats" id="detailStats"></div>
+        <p class="detail-synopsis" id="detailSynopsis"></p>
+        <div class="detail-cast" id="detailCast"></div>
+        <div class="detail-actions">
+          <a href="#sesiones" class="btn btn--primary">Comprar Entradas</a>
+          <a href="index.html" class="btn btn--ghost">Volver</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SESSIONS -->
+  <section class="sessions-section" id="sesiones">
+    <div class="container">
+      <div class="section__header" style="margin-bottom:24px">
+        <div>
+          <span class="section__kicker">Horarios</span>
+          <h2 class="section__title">Sesiones</h2>
+        </div>
+      </div>
+      <div class="date-tabs" id="dateTabs"></div>
+      <div id="sessionsList"></div>
+    </div>
+  </section>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 Cines Las Vías. Todos los derechos reservados.</span>
+      <div class="footer__legal">
+        <a href="#">Aviso legal</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/pelicula.js"></script>
+</body>
+</html>
